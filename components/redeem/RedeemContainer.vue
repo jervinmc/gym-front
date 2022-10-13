@@ -15,12 +15,12 @@
       <div>
         <div>
           <v-slide-group v-model="model" class="pa-4" multiple show-arrows>
-            <v-slide-item v-for="n in 15" :key="n">
+            <v-slide-item v-for="n in 5" :key="n">
               <div class="mx-3 py-5">
                 <v-card elevation="2" class="rounded-xl pointer" >
                   <div class="mx-5 py-5">
                     <v-icon size="40" color="secondary"> mdi-cart </v-icon>
-                    <div style="font-size:14px">Food and Beverages</div>
+                    <div style="font-size:14px">{{category[n]}}</div>
                   </div>
                 </v-card>
               </div>
@@ -28,7 +28,7 @@
           </v-slide-group>
         </div>
         <v-row no-gutters>
-          <v-col cols="3" v-for="x in 15" :key="x">
+          <v-col cols="3" v-for="x in 5" :key="x">
             <v-card
               :loading="loading"
               class="mx-2 my-2 rounded-lg pointer"
@@ -44,10 +44,10 @@
 
               <v-img
                 height="150"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                src="https://hips.hearstapps.com/hmg-prod/images/man-lifting-weights-in-gymnasium-royalty-free-image-591403645-1555718789.jpg"
               ></v-img>
 
-              <v-card-title>Cafe Badilico</v-card-title>
+              <v-card-title>Arms Exercise</v-card-title>
 
               <v-card-text>
                 <v-row align="center" class="mx-0">
@@ -90,7 +90,8 @@
 export default {
     data(){
         return{
-            search:''
+            search:'',
+            category:['Gym equipment','Free Trainer','Legs Exercise','Chest Exercise','Arm Exercises','Back Exercise']
         }
     }
 };

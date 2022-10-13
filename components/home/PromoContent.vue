@@ -2,11 +2,11 @@
   <v-sheet class="py-10">
     <v-slide-y-transition>
     <div class="text-h5 pl-10 v-leave-active" v-show="isShow">
-       Latest Items
+       Latest Gym Exercise
     </div>
     </v-slide-y-transition>
     <v-slide-group v-model="model" class="pa-4" multiple show-arrows>
-      <v-slide-item v-for="n in 15" :key="n" >
+      <v-slide-item v-for="n in 5" :key="n" >
         <v-card :loading="loading" class="mx-5 my-5" max-width="300">
           <template slot="progress">
             <v-progress-linear
@@ -17,7 +17,7 @@
           </template>
           <v-img
             height="150"
-            src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+            :src="images[n]"
           ></v-img>
           <v-card-title>Cafe Badilico</v-card-title>
           <v-card-text>
@@ -59,6 +59,12 @@ export default {
     },
     data(){
         return{
+          images:['https://www.muscleandfitness.com/wp-content/uploads/2019/11/Young-Muscular-Man-Doing-Lunges-In-Dark-Gym.jpg?quality=86&strip=all',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaq2cPMU0WkHfajwxy4BB6zJD4HddqHGKGog9VaHOkF4w8UsUhN4VH5WCFiNoe_3h04gY&usqp=CAU',
+          'https://www.bodybuilding.com/images/2019/july/best-beginner-weight-training-guide-with-easy-to-follow-workout-header-b-960x540.jpg',
+          'https://hips.hearstapps.com/hmg-prod/images/man-lifting-weights-in-gymnasium-royalty-free-image-591403645-1555718789.jpg',
+          'https://cdn.mos.cms.futurecdn.net/KLZwUWe4JwyyXY7pV7CpaU-320-80.jpg'
+          ],
             isShow:false,
         }
     }

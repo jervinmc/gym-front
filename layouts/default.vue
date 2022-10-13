@@ -73,7 +73,7 @@
         "
         @click="pushRoute('redeem')"
       >
-        Redeem
+        Offer
       </div>
       <div
         :class="

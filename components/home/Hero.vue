@@ -31,11 +31,11 @@
       <v-row class="px-10">
         <v-col  cols="6" align-self="center" class="px-10 bounce" transition="slide-x-transition">
           <div class="text-h4 secondary--text">
-            <b>Gym</b>
+            <b>No pain! No gain!</b>
           </div>
           <div class="text-h5 black--text">
             <b>
-              Staycation for BER Months!<br />
+              Gym Promo for BER Months!<br />
               2022
             </b>
           </div>
@@ -44,7 +44,7 @@
           </div>
         </v-col>
         <v-col align="center" cols="6">
-          <v-img src="/images/hero-vector.jpg" height="400" width="650" contain></v-img>
+          <v-img src="https://img.freepik.com/free-vector/athletes-doing-fitness-exercise-gym-with-panoramic-windows-isolated-flat-vector-illustration-cartoon-people-cardio-training-weight-lifting_74855-8225.jpg?w=1800&t=st=1665667790~exp=1665668390~hmac=00ccd8fb9ff32d2848cd961ecce6c8bf786f3546915d2bb8db7e313841ad0e05" height="400" width="650" contain></v-img>
         </v-col>
       </v-row>
   </div>

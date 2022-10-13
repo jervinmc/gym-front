@@ -103,7 +103,7 @@ export default {
         },light: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
-          secondary: '#ef5777',
+          secondary: '#416ce1',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
