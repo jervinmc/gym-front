@@ -1,10 +1,17 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-if="false"
+      v-if="
+        $route.name != 'login' &&
+        $route.name != 'index' &&
+        $route.name != 'register' &&
+        $route.name != 'redeem' 
+      "
       v-model="drawer"
       :mini-variant="miniVariant"
+      color="secondary"
       :clipped="clipped"
+      dark
       fixed
       app
     >
@@ -43,7 +50,18 @@
       </v-btn>
     </v-app-bar>
     <!-- is not logged in yet -->
-    <v-app-bar color="white" v-if="true" :clipped-left="clipped" fixed app>
+    <v-app-bar
+      color="white"
+      v-if="
+        $route.name == 'login' ||
+        $route.name == 'index' ||
+        $route.name == 'redeem' ||
+        $route.name == 'register'
+      "
+      :clipped-left="clipped"
+      fixed
+      app
+    >
       <div align="start">
         <v-img
           class="pointer"
@@ -98,17 +116,17 @@
         My Profile
       </div>
       <div class="mx-5" v-if="$auth.loggedIn">
-         <v-badge
+        <v-badge
           color="secondary"
           content="5"
           right
           overlap
           transition="slide-x-transition"
         >
-        <v-icon class="pointer">mdi-cart-outline</v-icon>
-         </v-badge> 
+          <v-icon class="pointer">mdi-cart-outline</v-icon>
+        </v-badge>
       </div>
-      
+
       <div v-if="$auth.loggedIn">
         <v-badge
           color="secondary"
@@ -131,6 +149,15 @@
         </v-btn>
       </div>
     </v-app-bar>
+    <v-app-bar v-else :clipped-left="clipped" fixed app white
+    >
+    <v-spacer></v-spacer>
+      <div class="px-10 pointer" align="end">
+        <v-btn dark depressed color="secondary" @click="$auth.logout()">
+          Logout
+        </v-btn>
+      </div>
+    </v-app-bar>
     <v-main>
       <v-container fluid class="pa-0">
         <Nuxt />
@@ -146,7 +173,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer padless>
+    <!-- <v-footer padless>
       <v-card flat tile>
         <v-card-text>
           <v-btn
@@ -181,7 +208,7 @@
           {{ new Date().getFullYear() }} — <strong>R2M</strong>
         </v-card-text>
       </v-card>
-    </v-footer>
+    </v-footer> -->
   </v-app>
 </template>
 
@@ -199,7 +226,7 @@ export default {
   data() {
     return {
       clipped: false,
-      drawer: false,
+      drawer: true,
       fixed: false,
       iconFooter: [
         "mdi-facebook",
@@ -210,13 +237,13 @@ export default {
       items: [
         {
           icon: "mdi-apps",
-          title: "Welcome",
+          title: "Dashboard",
           to: "/",
         },
         {
           icon: "mdi-chart-bubble",
-          title: "Inspire",
-          to: "/inspire",
+          title: "Exercise",
+          to: "/admin/exercise",
         },
       ],
       miniVariant: false,

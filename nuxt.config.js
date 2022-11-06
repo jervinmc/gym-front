@@ -10,7 +10,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: ``,
-    title: 'R2M',
+    title: 'Gym App',
     htmlAttrs: {
       lang: 'en'
     },
@@ -54,7 +54,7 @@ export default {
       login: "/login",
       logout: "/",
       callback: "/login",
-      home: "/client/profile"
+      home: "/admin/exercise"
     }
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
