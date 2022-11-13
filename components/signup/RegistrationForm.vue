@@ -69,12 +69,43 @@
               ></v-text-field>
             </v-col>
             <v-col>
-              Birthdate
-              <v-text-field
-                outlined
-                :rules="standardRules"
-                v-model="register.birthdate"
-              ></v-text-field>
+              <div>
+                Birthdate
+                <div class="text-h5">
+                  <v-menu
+                    ref="birthdateMenu"
+                    v-model="departMenu"
+                    :close-on-content-click="false"
+                    :return-value.sync="register.birthdate"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="auto"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="register.birthdate"
+                        outlined
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker v-model="register.birthdate" no-title scrollable>
+                      <v-spacer></v-spacer>
+                      <v-btn text color="primary" @click="birthdateMenu = false">
+                        Cancel
+                      </v-btn>
+                      <v-btn
+                        text
+                        color="primary"
+                        @click="$refs.birthdateMenu.save(register.birthdate)"
+                      >
+                        OK
+                      </v-btn>
+                    </v-date-picker>
+                  </v-menu>
+                </div>
+              </div>
             </v-col>
           </v-row>
         </div>

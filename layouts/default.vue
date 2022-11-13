@@ -65,8 +65,8 @@
       <div align="start">
         <v-img
           class="pointer"
-          src="/logo.jpeg"
-          height="50"
+          src="/images/PFP.jpeg"
+          height="60"
           width="100"
           contain
           @click="goIndex"
