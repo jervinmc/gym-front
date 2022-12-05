@@ -28,7 +28,7 @@
           </v-slide-group>
         </div>
         <v-row no-gutters>
-          <v-col cols="3" v-for="x in 5" :key="x">
+          <v-col cols="3" v-for="x in product_data" :key="x">
             <v-card
               :loading="loading"
               class="mx-2 my-2 rounded-lg pointer"
@@ -87,7 +87,14 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 export default {
+  computed:{
+    ...mapState('product',['product_data'])
+  },
+  created(){
+    this.$store.dispatch("product/view")
+  },
     data(){
         return{
             search:'',

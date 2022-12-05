@@ -240,10 +240,35 @@ export default {
           title: "Dashboard",
           to: "/",
         },
+         {
+          icon: "mdi-chart-bubble",
+          title: "User Management",
+          to: "/admin/users",
+        },
         {
           icon: "mdi-chart-bubble",
           title: "Exercise",
           to: "/admin/exercise",
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Book",
+          to: "/admin/book",
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Product",
+          to: "/admin/product",
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Transaction",
+          to: "/admin/transaction",
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Reports",
+          to: "/admin/reports",
         },
       ],
       miniVariant: false,

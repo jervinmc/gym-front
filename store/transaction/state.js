@@ -1,9 +1,7 @@
 const state = () => ({
     page_size: 10,
     query_results: {},
-    users: [],
-    users_data:[],
-    selected_customer: {},
+    transaction_data: [],
   });
   
   export default state;

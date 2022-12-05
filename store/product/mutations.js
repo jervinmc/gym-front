@@ -1,7 +1,6 @@
 const mutations = {
     SET_EVENT: (state, payload) => {
-    state.book_data = payload;
-    
+    state.product_data = payload;
   },
 }
   export default mutations;

@@ -1,23 +1,21 @@
 const actions = {
-    async addBook({ commit },  book ) {
-      book.status='Pending'
+    async add({ commit },  data ) {
       const response = await this.$axios.$post(
-        "/book/",
-        book
+        "/transaction/",
+        data
       );
-      response.book = book;
+      response.data = data;
     },
-    async editUser({ commit },  customer ) {
-      console.log(customer)
+    async edit({ commit },  data ) {
       const response = await this.$axios.$put(
-        `/users/${customer.id}/`,
-        customer
+        `/transaction/${data.id}/`,
+        data
       );
-      response.customer = customer;
+      response.data = data;
     },
     async view({ commit }, ) {
         const response = await this.$axios.$get(
-          "/book/"
+          "/transaction/"
         );
         commit("SET_EVENT", response);
       },

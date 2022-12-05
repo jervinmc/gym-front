@@ -1,7 +1,7 @@
 const state = () => ({
     page_size: 10,
     query_results: {},
-    book: [],
+    book_data: [],
     book_details:{
         date:['',''],
         total:'',
