@@ -5,7 +5,7 @@
         <v-row>
           <v-col cols="12">
             <v-text-field
-              v-model="register.name"
+              v-model="register.product_name"
               outlined
               dense
               placeholder="Product Name"
@@ -78,7 +78,7 @@
           <b>Product Management</b>
         </v-col>
         <v-col align="end">
-          <v-btn color="primary" @click="isAdd = true" outlined class="rounded-lg">Add Exercise</v-btn>
+          <v-btn color="primary" @click="isAdd = true" outlined class="rounded-lg">Add Product</v-btn>
         </v-col>
       </v-row>
     </div>

@@ -19,7 +19,7 @@
             height="150"
             :src="images[n]"
           ></v-img>
-          <v-card-title>Cafe Badilico</v-card-title>
+          <v-card-title>{{title[n]}}</v-card-title>
           <v-card-text>
             <v-row align="center" class="mx-0">
               <v-rating
@@ -59,6 +59,7 @@ export default {
     },
     data(){
         return{
+          title:['Leg Workout','Chest Workout','Arms Workout','Push ups','Curl Ups'],
           images:['https://www.muscleandfitness.com/wp-content/uploads/2019/11/Young-Muscular-Man-Doing-Lunges-In-Dark-Gym.jpg?quality=86&strip=all',
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaq2cPMU0WkHfajwxy4BB6zJD4HddqHGKGog9VaHOkF4w8UsUhN4VH5WCFiNoe_3h04gY&usqp=CAU',
           'https://www.bodybuilding.com/images/2019/july/best-beginner-weight-training-guide-with-easy-to-follow-workout-header-b-960x540.jpg',

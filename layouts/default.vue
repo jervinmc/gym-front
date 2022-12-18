@@ -138,12 +138,12 @@
           <v-icon class="pointer">mdi-bell-outline</v-icon>
         </v-badge>
       </div>
-      <div class="px-10 pointer" v-if="!$auth.loggedIn">
+      <!-- <div class="px-10 pointer" v-if="!$auth.loggedIn">
         <v-btn dark depressed color="secondary" @click="pushRoute('register')">
           Sign up
         </v-btn>
-      </div>
-      <div class="px-10 pointer" v-else>
+      </div> -->
+      <div class="px-10 pointer" v-if="$auth.loggedIn">
         <v-btn dark depressed color="secondary" @click="$auth.logout()">
           Logout
         </v-btn>
