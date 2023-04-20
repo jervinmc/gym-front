@@ -106,6 +106,17 @@
       </div>
       <div
         :class="
+          $route.name == 'login'
+            ? 'px-10 pointer secondary--text'
+            : 'px-10 pointer'
+        "
+        @click="waiverForm()"
+        v-if="!$auth.loggedIn"
+      >
+        Waiver Form
+      </div>
+      <div
+        :class="
           $route.name == 'client-profile'
             ? 'px-10 pointer secondary--text'
             : 'px-10 pointer'
@@ -115,7 +126,7 @@
       >
         My Profile
       </div>
-      <div class="mx-5" v-if="$auth.loggedIn">
+      <!-- <div class="mx-5" v-if="$auth.loggedIn">
         <v-badge
           color="secondary"
           content="5"
@@ -125,9 +136,9 @@
         >
           <v-icon class="pointer">mdi-cart-outline</v-icon>
         </v-badge>
-      </div>
+      </div> -->
 
-      <div v-if="$auth.loggedIn">
+      <!-- <div v-if="$auth.loggedIn">
         <v-badge
           color="secondary"
           content="99+"
@@ -137,7 +148,7 @@
         >
           <v-icon class="pointer">mdi-bell-outline</v-icon>
         </v-badge>
-      </div>
+      </div> -->
       <!-- <div class="px-10 pointer" v-if="!$auth.loggedIn">
         <v-btn dark depressed color="secondary" @click="pushRoute('register')">
           Sign up
@@ -215,6 +226,9 @@
 <script>
 export default {
   methods: {
+    waiverForm(){
+      window.location="https://chatmind.s3.ap-northeast-1.amazonaws.com/F3-Membership-Form+(1).docx"
+    },
     pushRoute(link) {
       window.location.href = `/${link}`;
     },
@@ -244,6 +258,11 @@ export default {
           icon: "mdi-chart-bubble",
           title: "User Management",
           to: "/admin/users",
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Employee Management",
+          to: "/admin/employee",
         },
         {
           icon: "mdi-chart-bubble",

@@ -25,7 +25,7 @@
           :search="search"
           class="pa-5"
           :headers="headers"
-          :items="users_data"
+          :items="filteredData"
           :loading="isLoading"
         >
           <template v-slot:loading>
@@ -133,8 +133,8 @@ export default {
   computed: {
     ...mapState("users", ["users_data"]),
     filteredData(){
-        return this.exercise_data.filter(data=>data.category==this.status)
-    }
+          return this.users_data.filter(data=>data.account_type=='Client')
+      }
   },
   methods: {
     async submitHandler() {
