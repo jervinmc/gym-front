@@ -40,7 +40,7 @@
             </b>
           </div>
           <div class="my-10 black--text">
-            <v-btn depressed color="secondary" dark> BOOK NOW </v-btn>
+            <!-- <v-btn depressed color="secondary" dark @click="bookNow"> BOOK NOW </v-btn> -->
           </div>
         </v-col>
         <!-- <v-col align="center" cols="6">
@@ -52,7 +52,18 @@
 
 <script>
 
-export default {};
+export default {
+  methods:{
+    bookNow(){
+      if(this.$auth.loggedIn){
+
+      }
+      else{
+        window.location.reload()
+      }
+    }
+  }
+};
 </script>
 
 <style>

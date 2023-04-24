@@ -5,7 +5,8 @@
         $route.name != 'login' &&
         $route.name != 'index' &&
         $route.name != 'register' &&
-        $route.name != 'redeem' 
+        $route.name != 'redeem' && 
+        $route.name != 'contact' 
       "
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -56,7 +57,8 @@
         $route.name == 'login' ||
         $route.name == 'index' ||
         $route.name == 'redeem' ||
-        $route.name == 'register'
+        $route.name == 'register' ||
+        $route.name == 'contact'
       "
       :clipped-left="clipped"
       fixed
@@ -82,16 +84,6 @@
         @click="pushRoute('contact')"
       >
         Contact Us
-      </div>
-      <div
-        :class="
-          $route.name == 'redeem'
-            ? 'px-10 pointer secondary--text'
-            : 'px-10 pointer'
-        "
-        @click="pushRoute('redeem')"
-      >
-        Offer
       </div>
       <div
         :class="
@@ -126,44 +118,7 @@
       >
         My Profile
       </div>
-      <!-- <div class="mx-5" v-if="$auth.loggedIn">
-        <v-badge
-          color="secondary"
-          content="5"
-          right
-          overlap
-          transition="slide-x-transition"
-        >
-          <v-icon class="pointer">mdi-cart-outline</v-icon>
-        </v-badge>
-      </div> -->
-
-      <!-- <div v-if="$auth.loggedIn">
-        <v-badge
-          color="secondary"
-          content="99+"
-          right
-          overlap
-          transition="slide-x-transition"
-        >
-          <v-icon class="pointer">mdi-bell-outline</v-icon>
-        </v-badge>
-      </div> -->
-      <!-- <div class="px-10 pointer" v-if="!$auth.loggedIn">
-        <v-btn dark depressed color="secondary" @click="pushRoute('register')">
-          Sign up
-        </v-btn>
-      </div> -->
       <div class="px-10 pointer" v-if="$auth.loggedIn">
-        <v-btn dark depressed color="secondary" @click="$auth.logout()">
-          Logout
-        </v-btn>
-      </div>
-    </v-app-bar>
-    <v-app-bar v-else :clipped-left="clipped" fixed app white
-    >
-    <v-spacer></v-spacer>
-      <div class="px-10 pointer" align="end">
         <v-btn dark depressed color="secondary" @click="$auth.logout()">
           Logout
         </v-btn>

@@ -42,9 +42,9 @@
           </v-card-text>
           <v-divider class="mx-4"></v-divider>
           <v-card-actions>
-            <v-btn color="secondary--text" text @click="$Location('redeem')">
+            <!-- <v-btn color="secondary--text" text @click="$Location('redeem')">
              <b class="secondary--text"> Get </b>
-            </v-btn>
+            </v-btn> -->
           </v-card-actions>
         </v-card>
       </v-slide-item>
