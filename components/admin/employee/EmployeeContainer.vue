@@ -307,9 +307,8 @@
         ],
         headers: [
           { text: "ID", value: "id" },
-          { text: "Firstname", value: "firstname" },
-          { text: "Lastname", value: "lastname" },
-          { text: "Address", value: "address" },
+          { text: "Email", value: "email" },
+          { text: "Mobile Number", value: "mobile_number" },
           { text: "Account Type", value: "account_type" },
           // { text: "Actions", value: "opt" },
           ,

@@ -6,16 +6,13 @@
                 HEAD OFFICE
             </div>
             <div class="pt-10">
-                Archipelago Philippine Ferries Corporation
+                EF Square, 4/F Manila N Rd,
             </div>
             <div class="pt-2">
-                6th Floor Unioil Center Bldg., Commerce Avenue corner
+                Urdaneta,2428 Pangasinan
             </div>
             <div class="pt-2">
-                Acacia Avenue, Madrigal Business Park, Ayala Alabang,
-            </div>
-            <div class="pt-2">
-                Muntinlupa City, 1780
+                BCO Urdaneta-Alliance in Motion Global
             </div>
         </v-col>
         <v-col>

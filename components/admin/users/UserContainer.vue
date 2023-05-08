@@ -6,7 +6,7 @@
           <b>User Management</b>
         </v-col>
         <v-col align="end">
-          <v-btn color="primary" @click="addForm = true" outlined class="rounded-lg">Add Exercise</v-btn>
+          <!-- <v-btn color="primary" @click="addForm = true" outlined class="rounded-lg"></v-btn> -->
         </v-col>
       </v-row>
     </div>
@@ -148,6 +148,7 @@ export default {
         form_data.append("description", this.register.description);
         await this.$store.dispatch("exercise/add", form_data);
         alert('Successfully Added!')
+        window.location.reload()
       } catch (error) {
 
       }
@@ -250,9 +251,8 @@ export default {
       ],
       headers: [
         { text: "ID", value: "id" },
-        { text: "Firstname", value: "firstname" },
-        { text: "Lastname", value: "lastname" },
-        { text: "Address", value: "address" },
+        { text: "Email", value: "email" },
+        { text: "Mobile", value: "mobile_number" },
         // { text: "Actions", value: "opt" },
         ,
       ],
