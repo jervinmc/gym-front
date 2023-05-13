@@ -251,6 +251,8 @@ export default {
       ],
       headers: [
         { text: "ID", value: "id" },
+        { text: "Firstname", value: "firstname" },
+        { text: "Lastname", value: "lastname" },
         { text: "Email", value: "email" },
         { text: "Mobile", value: "mobile_number" },
         // { text: "Actions", value: "opt" },
