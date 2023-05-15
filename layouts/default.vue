@@ -268,6 +268,7 @@
       $route.name != 'index' &&
       $route.name != 'register' &&
       $route.name != 'redeem' &&
+      $route.name != 'payments' &&
       $route.name != 'contact'
       " v-model="drawer" :mini-variant="miniVariant" color="secondary" :clipped="clipped" dark fixed app>
       <v-list>
