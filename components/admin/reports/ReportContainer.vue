@@ -329,6 +329,8 @@ export default {
       headers_book: [
         { text: "ID", value: "id" },
         { text: "User ID", value: "user_id" },
+        { text: "Firstname", value: "firstname" },
+        { text: "Lastname", value: "lastname" },
         { text: "Date", value: "created_date" },
         // { text: "Address", value: "address" },
         // { text: "Actions", value: "opt" },

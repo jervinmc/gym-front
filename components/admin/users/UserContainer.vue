@@ -52,55 +52,12 @@
               <v-list dense>
                 <v-list-item @click.stop="edit(item, '')">
                   <v-list-item-content>
-                    <v-list-item-title>View</v-list-item-title>
+                    <v-list-item-title>Update</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item
-                  @click.stop="statusConfirmation(item, 'Approved')"
-                  v-if="item.status == 'Pending'"
-                >
+                <v-list-item @click.stop="edit(item, '')">
                   <v-list-item-content>
-                    <v-list-item-title>Approve</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="statusConfirmation(item, 'Declined')"
-                  v-if="item.status == 'Pending'"
-                  >>
-                  <v-list-item-content>
-                    <v-list-item-title>Decline</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'For Review')"
-                  v-if="status == 'Pending'"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>For Review</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'Summon')"
-                  v-if="status == 'For Review'"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>Summon</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'Settled')"
-                  v-if="status == 'Summon'"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>Settled</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'Dismissed')"
-                  v-if="status == 'Summon'"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>Dismissed</v-list-item-title>
+                    <v-list-item-title>Delete</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
@@ -255,7 +212,7 @@ export default {
         { text: "Lastname", value: "lastname" },
         { text: "Email", value: "email" },
         { text: "Mobile", value: "mobile_number" },
-        // { text: "Actions", value: "opt" },
+        { text: "Actions", value: "opt" },
         ,
       ],
     };

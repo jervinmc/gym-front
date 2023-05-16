@@ -15,12 +15,23 @@ const actions = {
     );
     response.customer = customer;
   },
+  async delete({ commit },  customer ) {
+    alert()
+    console.log(customer)
+    const response = await this.$axios.$delete(
+      `/users/${customer.id}/`,
+      customer
+    );
+    window.location.reload()
+    response.customer = customer;
+  },
   async view({ commit }, ) {
     const response = await this.$axios.$get(
       "/users/"
     );
     commit("SET_EVENT", response);
   },
+  
 };
 
 export default actions;

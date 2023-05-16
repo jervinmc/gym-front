@@ -35,7 +35,7 @@
           <b>Employee Management</b>
         </v-col>
         <v-col align="end">
-          <v-btn color="primary" @click="isAdd = true" outlined class="rounded-lg">Add Employee</v-btn>
+          <v-btn color="primary" @click="addNow" outlined class="rounded-lg">Add Employee</v-btn>
         </v-col>
       </v-row>
     </div>
@@ -62,39 +62,14 @@
                 </v-btn>
               </template>
               <v-list dense>
-                <v-list-item @click.stop="edit(item, '')">
+                <v-list-item @click.stop="editHandler(item)">
                   <v-list-item-content>
-                    <v-list-item-title>View</v-list-item-title>
+                    <v-list-item-title>Edit</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item @click.stop="statusConfirmation(item, 'Approved')" v-if="item.status == 'Pending'">
+                <v-list-item @click.stop="deleteHandler(item)">
                   <v-list-item-content>
-                    <v-list-item-title>Approve</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item @click.stop="statusConfirmation(item, 'Declined')" v-if="item.status == 'Pending'">>
-                  <v-list-item-content>
-                    <v-list-item-title>Decline</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item @click.stop="editItem(item, 'For Review')" v-if="status == 'Pending'">
-                  <v-list-item-content>
-                    <v-list-item-title>For Review</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item @click.stop="editItem(item, 'Summon')" v-if="status == 'For Review'">
-                  <v-list-item-content>
-                    <v-list-item-title>Summon</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item @click.stop="editItem(item, 'Settled')" v-if="status == 'Summon'">
-                  <v-list-item-content>
-                    <v-list-item-title>Settled</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item @click.stop="editItem(item, 'Dismissed')" v-if="status == 'Summon'">
-                  <v-list-item-content>
-                    <v-list-item-title>Dismissed</v-list-item-title>
+                    <v-list-item-title>Delete</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
@@ -131,6 +106,20 @@ export default {
     }
   },
   methods: {
+    addNow(){
+      this.isAdd = true
+      this.isEdit = false
+    },
+    deleteHandler(item) {
+      this.$store.dispatch("users/delete", item).then(() => {
+
+      })
+    },
+    editHandler(item) {
+      this.register = cloneDeep(item);
+      this.isEdit = true
+      this.isAdd = true;
+    },
     async submitHandler() {
       try {
         let data = {
@@ -142,14 +131,23 @@ export default {
           firstname: this.register.firstname,
           password: 'eysersefawefdfaer',
         }
+
+        if (this.isEdit) {
+          data.id = this.register.id
+          await this.$store.dispatch("users/editUser", data);
+        }
+        else{
+          
+          await this.$store.dispatch("users/addUser", data);
+        }
         // let form_data = new FormData();
         // form_data.append("firstname", this.register.firstname);
         // form_data.append("lastname", this.register.lastname);
         // form_data.append("account_type", this.register.account_type);
         // form_data.append("email", `${this.register.firstname}.${this.register.lastname}@gmail.com`);
         // form_data.append("password", `$dfawe123dfaewfds`);
-        await this.$store.dispatch("users/addUser", data);
-        alert('Successfully Added!')
+        
+        alert('Successful!')
         window.location.reload()
       } catch (error) {
 
@@ -229,6 +227,7 @@ export default {
   },
   data() {
     return {
+      isEdit: false,
       isAdd: false,
       register: {},
       addForm: false,
@@ -259,7 +258,7 @@ export default {
         { text: "Lastname", value: "lastname" },
         { text: "Mobile Number", value: "mobile_number" },
         { text: "Account Type", value: "account_type" },
-        // { text: "Actions", value: "opt" },
+        { text: "Actions", value: "opt" },
         ,
       ],
     };
