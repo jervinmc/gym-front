@@ -1,5 +1,34 @@
 <template>
   <v-sheet class="pa-10" color="">
+    <v-dialog width="500" v-model="isAdd">
+      <v-card class="pa-16">
+        <v-row>
+          <v-col cols="12">
+            <v-text-field v-model="register.firstname" outlined dense placeholder="First Name"></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-text-field v-model="register.lastname" outlined dense placeholder="Last Name"></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-text-field v-model="register.mobile_number" outlined dense placeholder="Mobile Number"></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-select outlined dense v-model="register.account_type" placeholder="User Type"
+              :items="['Owner', 'Manager', 'Trainer']"></v-select>
+          </v-col>
+          <v-col cols="12">
+            <v-row>
+              <v-col align="end">
+                <v-btn outlined class="rounded-lg" @click="isAdd = false">Cancel</v-btn>
+              </v-col>
+              <v-col>
+                <v-btn class="rounded-lg" color="secondary" @click="submitHandlerUser">Submit</v-btn>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-dialog>
     <div class="black--text text-h5 pb-5">
       <v-row>
         <v-col>
@@ -50,12 +79,12 @@
                 </v-btn>
               </template>
               <v-list dense>
-                <v-list-item @click.stop="edit(item, '')">
+                <v-list-item @click.stop="editHandler(item)">
                   <v-list-item-content>
-                    <v-list-item-title>Update</v-list-item-title>
+                    <v-list-item-title>Edit</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item @click.stop="edit(item, '')">
+                <v-list-item @click.stop="deleteHandler(item)">
                   <v-list-item-content>
                     <v-list-item-title>Delete</v-list-item-title>
                   </v-list-item-content>
@@ -94,6 +123,18 @@ export default {
       }
   },
   methods: {
+    deleteHandler(item) {
+      this.$store.dispatch("users/delete", item).then(() => {
+
+      })
+      alert('Successfully deleted')
+      window.location.reload()
+    },
+    editHandler(item) {
+      this.register = cloneDeep(item);
+      this.isEdit = true
+      this.isAdd = true;
+    },
     async submitHandler() {
       try {
         let form_data = new FormData();
@@ -105,6 +146,33 @@ export default {
         form_data.append("description", this.register.description);
         await this.$store.dispatch("exercise/add", form_data);
         alert('Successfully Added!')
+        window.location.reload()
+      } catch (error) {
+
+      }
+    },
+        async submitHandlerUser() {
+      try {
+        let data = {
+          firstname: this.register.firstname,
+          lastname: this.register.lastname,
+          mobile_number: this.register.mobile_number,
+          account_type: this.register.account_type,
+          email: `${this.register.firstname}.${this.register.lastname}@gmail.com`,
+          firstname: this.register.firstname,
+        }
+
+          data.id = this.register.id
+          await this.$store.dispatch("users/editUser", data);
+    
+        // let form_data = new FormData();
+        // form_data.append("firstname", this.register.firstname);
+        // form_data.append("lastname", this.register.lastname);
+        // form_data.append("account_type", this.register.account_type);
+        // form_data.append("email", `${this.register.firstname}.${this.register.lastname}@gmail.com`);
+        // form_data.append("password", `$dfawe123dfaewfds`);
+        
+        alert('Successful!')
         window.location.reload()
       } catch (error) {
 
@@ -184,6 +252,7 @@ export default {
   },
   data() {
     return {
+      isAdd: false,
       register: {},
       addForm: false,
       isConfirmationApprove: false,

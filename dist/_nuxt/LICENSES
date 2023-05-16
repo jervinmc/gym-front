@@ -21,13 +21,6 @@
 
 
 /*!
- * vue-toastr v2.1.2 
- * (c) 2019 s4l1h
- * Released under the MIT License.
- */
-
-
-/*!
  * @overview es6-promise - a tiny implementation of Promises/A+.
  * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
  * @license   Licensed under MIT license
@@ -162,6 +155,13 @@
 
 
 /*!
+ * vue-toastr v2.1.2 
+ * (c) 2019 s4l1h
+ * Released under the MIT License.
+ */
+
+
+/*!
   * vue-router v3.5.4
   * (c) 2022 Evan You
   * @license MIT
@@ -184,13 +184,6 @@
  * vuex v3.6.2
  * (c) 2021 Evan You
  * @license MIT
- */
-
-
-/*!
- * vue-toastr v2.1.2 
- * (c) 2019 s4l1h
- * Released under the MIT License.
  */
 
 

@@ -114,6 +114,8 @@ export default {
       this.$store.dispatch("users/delete", item).then(() => {
 
       })
+      alert('Successfully deleted')
+      window.location.reload()
     },
     editHandler(item) {
       this.register = cloneDeep(item);
