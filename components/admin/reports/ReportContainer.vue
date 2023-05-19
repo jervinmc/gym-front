@@ -8,7 +8,7 @@
             <v-card class="pa-4">
               <v-icon class="display-1"></v-icon>
               <div class="title">No. of Bookings</div>
-              <div class="subtitle">{{total_bookings }}</div>
+              <div class="subtitle">{{ total_bookings }}</div>
             </v-card>
           </v-col>
           <v-col cols="12" md="6">
@@ -24,23 +24,19 @@
         <!-- <div class="pa-5">
           <VueApexCharts :series="series" :data="data" :options="chartOptions" height="300" />
         </div> -->
+        <div>
+          <export-excel :data="transaction_data">
+            <v-btn>
+              Download Data
+            </v-btn>
+          </export-excel>
+        </div>
         <div class="pa-5 text-h6">
           Product Management
         </div>
-        <v-data-table
-          :search="search"
-          class="pa-5"
-          :headers="headers"
-          :items="transaction_data"
-          :loading="isLoading"
-        >
+        <v-data-table :search="search" class="pa-5" :headers="headers" :items="transaction_data" :loading="isLoading">
           <template v-slot:loading>
-            <v-skeleton-loader
-              v-for="n in 5"
-              :key="n"
-              type="list-item-avatar-two-line"
-              class="my-2"
-            ></v-skeleton-loader>
+            <v-skeleton-loader v-for="n in 5" :key="n" type="list-item-avatar-two-line" class="my-2"></v-skeleton-loader>
           </template>
           <template #[`item.is_active`]="{ item }">
             {{ item.is_active ? "Yes" : "No" }}
@@ -61,50 +57,32 @@
                     <v-list-item-title>View</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item
-                  @click.stop="statusConfirmation(item, 'Approved')"
-                  v-if="item.status == 'Pending'"
-                >
+                <v-list-item @click.stop="statusConfirmation(item, 'Approved')" v-if="item.status == 'Pending'">
                   <v-list-item-content>
                     <v-list-item-title>Approve</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item
-                  @click.stop="statusConfirmation(item, 'Declined')"
-                  v-if="item.status == 'Pending'"
-                  >>
+                <v-list-item @click.stop="statusConfirmation(item, 'Declined')" v-if="item.status == 'Pending'">>
                   <v-list-item-content>
                     <v-list-item-title>Decline</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'For Review')"
-                  v-if="status == 'Pending'"
-                >
+                <v-list-item @click.stop="editItem(item, 'For Review')" v-if="status == 'Pending'">
                   <v-list-item-content>
                     <v-list-item-title>For Review</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'Summon')"
-                  v-if="status == 'For Review'"
-                >
+                <v-list-item @click.stop="editItem(item, 'Summon')" v-if="status == 'For Review'">
                   <v-list-item-content>
                     <v-list-item-title>Summon</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'Settled')"
-                  v-if="status == 'Summon'"
-                >
+                <v-list-item @click.stop="editItem(item, 'Settled')" v-if="status == 'Summon'">
                   <v-list-item-content>
                     <v-list-item-title>Settled</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'Dismissed')"
-                  v-if="status == 'Summon'"
-                >
+                <v-list-item @click.stop="editItem(item, 'Dismissed')" v-if="status == 'Summon'">
                   <v-list-item-content>
                     <v-list-item-title>Dismissed</v-list-item-title>
                   </v-list-item-content>
@@ -115,94 +93,66 @@
         </v-data-table>
         <div>
           <div class="pa-5 text-h6">
-          Book Management
-        </div>
-        <v-data-table
-          :search="search"
-          class="pa-5"
-          :headers="headers_book"
-          :items="book_data"
-          :loading="isLoading"
-        >
-          <template v-slot:loading>
-            <v-skeleton-loader
-              v-for="n in 5"
-              :key="n"
-              type="list-item-avatar-two-line"
-              class="my-2"
-            ></v-skeleton-loader>
-          </template>
-          <template #[`item.is_active`]="{ item }">
-            {{ item.is_active ? "Yes" : "No" }}
-          </template>
-          <template #[`item.image`]="{ item }">
-            <v-img :src="item.image" height="100" width="100"></v-img>
-          </template>
-          <template #[`item.opt`]="{ item }">
-            <v-menu offset-y z-index="1">
-              <template v-slot:activator="{ attrs, on }">
-                <v-btn icon v-bind="attrs" v-on="on">
-                  <v-icon>mdi-dots-horizontal</v-icon>
-                </v-btn>
-              </template>
-              <v-list dense>
-                <v-list-item @click.stop="edit(item, '')">
-                  <v-list-item-content>
-                    <v-list-item-title>View</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="statusConfirmation(item, 'Approved')"
-                  v-if="item.status == 'Pending'"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>Approve</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="statusConfirmation(item, 'Declined')"
-                  v-if="item.status == 'Pending'"
-                  >>
-                  <v-list-item-content>
-                    <v-list-item-title>Decline</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'For Review')"
-                  v-if="status == 'Pending'"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>For Review</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'Summon')"
-                  v-if="status == 'For Review'"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>Summon</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'Settled')"
-                  v-if="status == 'Summon'"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>Settled</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item
-                  @click.stop="editItem(item, 'Dismissed')"
-                  v-if="status == 'Summon'"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>Dismissed</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-          </template>
-        </v-data-table>
+            Book Management
+          </div>
+          <v-data-table :search="search" class="pa-5" :headers="headers_book" :items="book_data" :loading="isLoading">
+            <template v-slot:loading>
+              <v-skeleton-loader v-for="n in 5" :key="n" type="list-item-avatar-two-line"
+                class="my-2"></v-skeleton-loader>
+            </template>
+            <template #[`item.is_active`]="{ item }">
+              {{ item.is_active ? "Yes" : "No" }}
+            </template>
+            <template #[`item.image`]="{ item }">
+              <v-img :src="item.image" height="100" width="100"></v-img>
+            </template>
+            <template #[`item.opt`]="{ item }">
+              <v-menu offset-y z-index="1">
+                <template v-slot:activator="{ attrs, on }">
+                  <v-btn icon v-bind="attrs" v-on="on">
+                    <v-icon>mdi-dots-horizontal</v-icon>
+                  </v-btn>
+                </template>
+                <v-list dense>
+                  <v-list-item @click.stop="edit(item, '')">
+                    <v-list-item-content>
+                      <v-list-item-title>View</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item @click.stop="statusConfirmation(item, 'Approved')" v-if="item.status == 'Pending'">
+                    <v-list-item-content>
+                      <v-list-item-title>Approve</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item @click.stop="statusConfirmation(item, 'Declined')" v-if="item.status == 'Pending'">>
+                    <v-list-item-content>
+                      <v-list-item-title>Decline</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item @click.stop="editItem(item, 'For Review')" v-if="status == 'Pending'">
+                    <v-list-item-content>
+                      <v-list-item-title>For Review</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item @click.stop="editItem(item, 'Summon')" v-if="status == 'For Review'">
+                    <v-list-item-content>
+                      <v-list-item-title>Summon</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item @click.stop="editItem(item, 'Settled')" v-if="status == 'Summon'">
+                    <v-list-item-content>
+                      <v-list-item-title>Settled</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item @click.stop="editItem(item, 'Dismissed')" v-if="status == 'Summon'">
+                    <v-list-item-content>
+                      <v-list-item-title>Dismissed</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+            </template>
+          </v-data-table>
         </div>
       </div>
     </div>
@@ -211,21 +161,24 @@
 
 <script>
 import VueApexCharts from "vue-apexcharts";
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
+import Vue from 'vue'
+import excel from 'vue-excel-export'
+Vue.use(excel)
 export default {
-  computed:{
-    ...mapState('book',['book_data']),
+  computed: {
+    ...mapState('book', ['book_data']),
     ...mapState("transaction", ["transaction_data"]),
-    total_bookings(){
+    total_bookings() {
       return this.book_data.length
     },
-    total_bookings_today(){
-      const today = new Date().toISOString().slice(0, 10); 
+    total_bookings_today() {
+      const today = new Date().toISOString().slice(0, 10);
       const todayEntries = this.book_data.filter(entry => entry.created_date.slice(0, 10) === today);
       return todayEntries.length
     }
   },
-  created(){
+  created() {
     this.$store.dispatch('book/view')
     this.$store.dispatch("transaction/view");
   },
@@ -325,7 +278,7 @@ export default {
           is_active: true,
         },
       ],
-      
+
       headers_book: [
         { text: "ID", value: "id" },
         { text: "User ID", value: "user_id" },

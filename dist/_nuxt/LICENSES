@@ -1,11 +1,4 @@
 /*!
- * vue-toastr v2.1.2 
- * (c) 2019 s4l1h
- * Released under the MIT License.
- */
-
-
-/*!
  * ApexCharts v3.36.2
  * (c) 2018-2022 ApexCharts
  * Released under the MIT License.
@@ -24,6 +17,32 @@
  * vue-toastr v2.1.2 
  * (c) 2019 s4l1h
  * Released under the MIT License.
+ */
+
+
+/*!
+  * vue-router v3.5.4
+  * (c) 2022 Evan You
+  * @license MIT
+  */
+
+/*!
+ * Vue.js v2.7.7
+ * (c) 2014-2022 Evan You
+ * Released under the MIT License.
+ */
+
+/*!
+ * cookie
+ * Copyright(c) 2012-2014 Roman Shtylman
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
+/*!
+ * vuex v3.6.2
+ * (c) 2021 Evan You
+ * @license MIT
  */
 
 
@@ -161,29 +180,15 @@
 //! moment.js locale configuration
 
 
-/*!
-  * vue-router v3.5.4
-  * (c) 2022 Evan You
-  * @license MIT
-  */
+/*! svg.filter.js - v2.0.2 - 2016-02-24
+  * https://github.com/wout/svg.filter.js
+  * Copyright (c) 2016 Wout Fierens; Licensed MIT */
+
 
 /*!
- * Vue.js v2.7.7
- * (c) 2014-2022 Evan You
+ * vue-toastr v2.1.2 
+ * (c) 2019 s4l1h
  * Released under the MIT License.
- */
-
-/*!
- * cookie
- * Copyright(c) 2012-2014 Roman Shtylman
- * Copyright(c) 2015 Douglas Christopher Wilson
- * MIT Licensed
- */
-
-/*!
- * vuex v3.6.2
- * (c) 2021 Evan You
- * @license MIT
  */
 
 
@@ -192,3 +197,7 @@
  * (c) 2019 s4l1h
  * Released under the MIT License.
  */
+
+/*! svg.filter.js - v2.0.2 - 2016-02-24
+  * https://github.com/wout/svg.filter.js
+  * Copyright (c) 2016 Wout Fierens; Licensed MIT */

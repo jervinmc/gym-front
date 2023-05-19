@@ -434,6 +434,11 @@ export default {
           to: "/",
         },
         {
+          icon: "mdi-apps",
+          title: "Attendance",
+          to: "/admin/attendance",
+        },
+        {
           icon: "mdi-chart-bubble",
           title: "User Management",
           to: "/admin/users",

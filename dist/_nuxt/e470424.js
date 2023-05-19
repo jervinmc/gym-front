@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[49],{841:function(n,o,t){"use strict";t.r(o);var e={components:{BookContainer:t(816).default}},c=t(103),component=Object(c.a)(e,(function(){var n=this._self._c;return n("div",[n("book-container")],1)}),[],!1,null,null,null);o.default=component.exports}}]);
