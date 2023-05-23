@@ -18,23 +18,28 @@
         <v-col>
             <div class="pt-16">
                 Name
-                <v-text-field outlined ></v-text-field>
+                <v-text-field v-model="register.fullname" outlined ></v-text-field>
             </div>
             <div class="pt-2">
                 Address
-                <v-text-field outlined ></v-text-field>
+                <v-text-field v-model="register.address" outlined ></v-text-field>
             </div>
             <div class="pt-2">
                 Contact Number
-                <v-text-field outlined ></v-text-field>
+                <v-text-field v-model="register.contact_number" outlined ></v-text-field>
             </div>
             <div class="pt-2">
                 Email
-                <v-text-field outlined ></v-text-field>
+                <v-text-field v-model="register.email" outlined ></v-text-field>
             </div>
             <div class="pt-2">
                 Message
-                <v-textarea outlined ></v-textarea>
+                <v-textarea v-model="register.message" outlined ></v-textarea>
+            </div>
+            <div>
+                <v-btn @click="submitHandler">
+                    Submit
+                </v-btn>
             </div>
         </v-col>
     </v-row>
@@ -43,7 +48,19 @@
 
 <script>
 export default {
-
+    data(){
+        return{
+            register:{}
+        }
+    },
+ methods:{
+    async submitHandler(){
+        this.$store.dispatch("users/inquire",this.register).then(()=>{
+            alert("Successfully Submitted!")
+            window.location.reload()
+        })
+    }
+ }
 }
 </script>
 

@@ -31,6 +31,13 @@ const actions = {
     );
     commit("SET_EVENT", response);
   },
+  async inquire({ commit }, data ) {
+    const response = await this.$axios.$post(
+      "/inquire/",
+      data
+    );
+    commit("SET_EVENT", response);
+  },
   
 };
 
